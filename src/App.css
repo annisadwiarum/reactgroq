@@ -3,10 +3,24 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  position: relative;
+}
+
+/* CSS untuk Video Background */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Pastikan video berada di belakang konten lainnya */
 }
 
 body {
   background-color: #1e1e1e;
+  margin: 0;
+  padding: 0;
 }
 
 .logo {
@@ -40,4 +54,3 @@ body {
 .card {
   padding: 2em;
 }
-

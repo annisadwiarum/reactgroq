@@ -21,7 +21,7 @@ function App() {
   }
   return (
     <main className="flex flex-col min-h-[80vh] justify-center gap-3 items-center max-w-xl w-full mx-auto">
-      <h1 className="font-bold text-green-500">REACT | GROQ AI</h1>
+      <h1 className="font-bold text-green-500">REACT X GROQ AI</h1>
       <form action="" className="flex flex-col gap-4 py-4 w-full">
         <input
           type="text"
