@@ -1,13 +1,44 @@
 import './App.css'
+import { useState } from 'react'
+import { requestGroqAi } from './utils/groq'
+import { Light as SyntaxHiglight } from 'react-syntax-highlighter'
+import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 function App() {
+  const [data, setData] = useState('')
+  const [content, setContent] = useState('')
+  const handleSubmit = async () => {
+    const ai = await requestGroqAi(content)
+    setData(ai)
+    console.log(ai)
+  }
   return (
-    <main>
-      <h1 className="font-bold text-green-500">GRoqqqqq</h1>
-      <form action="">
-        <input type="text" />
-        <button>kirim</button>
+    <main className="flex flex-col min-h-[80vh] justify-center gap-3 items-center max-w-xl w-full mx-auto">
+      <h1 className="font-bold text-green-500">REACT | GROQ AI</h1>
+      <form action="" className="flex flex-col gap-4 py-4 w-full">
+        <input
+          type="text"
+          className="py-2 px-4 text-md rounded-md"
+          placeholder="ketik permintaan di sini.."
+          id="content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <button
+          onClick={handleSubmit}
+          type="button"
+          className="bg-green-500 py-2 px-4 font-bold text-white rounded-md"
+        >
+          kirim
+        </button>
       </form>
+      <div className="max-w-xl">
+        {data ? (
+          <SyntaxHiglight language="swift" style={darcula} wrapLongLines={true}>
+            {data}
+          </SyntaxHiglight>
+        ) : null}
+      </div>
     </main>
   )
 }
