@@ -7,7 +7,7 @@
 }
 
 /* CSS untuk Video Background */
-#background-video {
+/* #background-video {
   position: fixed;
   top: 0;
   left: 0;
@@ -15,7 +15,6 @@
   height: 100%;
   object-fit: cover;
   z-index: -1; /* Pastikan video berada di belakang konten lainnya */
-}
 
 body {
   background-color: #1e1e1e;
