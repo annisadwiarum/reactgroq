@@ -3,13 +3,20 @@ import { useState } from 'react'
 import { requestGroqAi } from './utils/groq'
 import { Light as SyntaxHiglight } from 'react-syntax-highlighter'
 import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import ReactLoading from 'react-loading'
 
 function App() {
   const [data, setData] = useState('')
   const [content, setContent] = useState('')
+  const [showLoading, setShowLoading] = useState(false)
+
   const handleSubmit = async () => {
+    setShowLoading(true)
     const ai = await requestGroqAi(content)
-    setData(ai)
+    setTimeout(() => {
+      setData(ai)
+      setShowLoading(false)
+    }, 2000)
     console.log(ai)
   }
   return (
@@ -26,10 +33,20 @@ function App() {
         />
         <button
           onClick={handleSubmit}
+          disabled={showLoading}
           type="button"
-          className="bg-green-500 py-2 px-4 font-bold text-white rounded-md"
+          className="bg-green-500 py-2 px-4 font-bold text-white rounded-md flex items-center justify-center"
         >
-          kirim
+          {showLoading ? (
+            <ReactLoading
+              type="bubbles"
+              color="#ffffff"
+              height={30}
+              width={30}
+            />
+          ) : (
+            'Kirim'
+          )}
         </button>
       </form>
       <div className="max-w-xl">
